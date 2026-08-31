@@ -1,0 +1,67 @@
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.etiqueta {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+.fila {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.campo {
+  flex: 1;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-family: inherit;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.campo:focus {
+  border-color: var(--azul-pokemon);
+}
+
+.boton {
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--blanco);
+  background: var(--rojo-pokemon);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.boton:hover {
+  background: var(--rojo-oscuro);
+}
+
+.boton:active {
+  transform: scale(0.98);
+}
+
+.error {
+  color: var(--rojo-pokemon);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* En pantallas más anchas, ponemos input y botón en la misma línea. */
+@media (min-width: 520px) {
+  .fila {
+    flex-direction: row;
+  }
+}

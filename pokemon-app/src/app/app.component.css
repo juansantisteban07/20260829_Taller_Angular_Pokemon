@@ -1,0 +1,165 @@
+.contenedor {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cabecera {
+  text-align: center;
+  color: var(--texto);
+}
+
+.titulo {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--rojo-pokemon);
+  text-shadow: 2px 2px 0 var(--amarillo-pokemon);
+}
+
+.subtitulo {
+  margin-top: 6px;
+  font-size: 15px;
+  color: #444;
+}
+
+.tarjeta {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- Estados (carga / error) ---------- */
+.estado {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.estado-texto {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--texto-suave);
+}
+
+.estado-error {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--rojo-pokemon);
+}
+
+/* Pokébola animada para el estado de carga */
+.pokebola {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(
+    to bottom,
+    var(--rojo-pokemon) 0 46%,
+    #333 46% 54%,
+    var(--blanco) 54% 100%
+  );
+  border: 3px solid #333;
+  position: relative;
+  animation: girar 1s linear infinite;
+}
+
+.pokebola::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: var(--blanco);
+  border: 3px solid #333;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes girar {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Tarjeta del Pokémon ---------- */
+.tarjeta-pokemon {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.imagen-caja {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: radial-gradient(circle at center, #f7f9fc 0%, #e9edf3 100%);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.imagen {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.nombre {
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.id {
+  font-size: 15px;
+  color: var(--texto-suave);
+  font-weight: 500;
+}
+
+.tipos {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.tipo {
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blanco);
+  text-transform: capitalize;
+  background: var(--azul-pokemon);
+}
+
+/* Colores por tipo (opcional, mejora visual) */
+.tipo-fire { background: #f08030; }
+.tipo-water { background: #6890f0; }
+.tipo-grass { background: #78c850; }
+.tipo-electric { background: #f8d030; color: #333; }
+.tipo-ice { background: #98d8d8; color: #333; }
+.tipo-fighting { background: #c03028; }
+.tipo-poison { background: #a040a0; }
+.tipo-ground { background: #e0c068; color: #333; }
+.tipo-flying { background: #a890f0; }
+.tipo-psychic { background: #f85888; }
+.tipo-bug { background: #a8b820; }
+.tipo-rock { background: #b8a038; }
+.tipo-ghost { background: #705898; }
+.tipo-dragon { background: #7038f8; }
+.tipo-dark { background: #705848; }
+.tipo-steel { background: #b8b8d0; color: #333; }
+.tipo-fairy { background: #ee99ac; color: #333; }
+.tipo-normal { background: #a8a878; }

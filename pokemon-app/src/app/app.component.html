@@ -1,0 +1,48 @@
+<main class="contenedor">
+  <header class="cabecera">
+    <h1 class="titulo">Buscador Pokémon</h1>
+    <p class="subtitulo">Escribe un nombre o un número para encontrar tu Pokémon</p>
+  </header>
+
+  <!-- Tarjeta con el formulario. Escuchamos el evento (buscar) que emite. -->
+  <section class="tarjeta tarjeta-formulario">
+    <app-formulario (buscar)="onBuscar($event)"></app-formulario>
+  </section>
+
+  <!-- Estado de carga -->
+  @if (cargando) {
+    <section class="tarjeta estado">
+      <div class="pokebola"></div>
+      <p class="estado-texto">Buscando Pokémon...</p>
+    </section>
+  }
+
+  <!-- Mensaje de error -->
+  @if (error) {
+    <section class="tarjeta estado">
+      <p class="estado-error">{{ error }}</p>
+    </section>
+  }
+
+  <!-- Resultado: tarjeta del Pokémon -->
+  @if (pokemon && !cargando) {
+    <section class="tarjeta tarjeta-pokemon">
+      <div class="imagen-caja">
+        <img
+          class="imagen"
+          [src]="obtenerImagen(pokemon)"
+          [alt]="'Imagen de ' + pokemon.name"
+        />
+      </div>
+
+      <h2 class="nombre">{{ pokemon.name }}</h2>
+      <p class="id">ID: {{ pokemon.id }}</p>
+
+      <div class="tipos">
+        @for (t of pokemon.types; track t.type.name) {
+          <span class="tipo tipo-{{ t.type.name }}">{{ t.type.name }}</span>
+        }
+      </div>
+    </section>
+  }
+</main>
