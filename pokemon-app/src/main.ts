@@ -1,10 +1,11 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
-
 import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes';
+import { provideRouter } from '@angular/router';
 
-// Arrancamos la aplicación con el componente principal.
-// provideHttpClient() habilita HttpClient en toda la app (necesario para el servicio).
 bootstrapApplication(AppComponent, {
-  providers: [provideHttpClient()],
+  providers: [
+   provideRouter(routes), provideHttpClient()
+  ],
 }).catch((err) => console.error(err));
