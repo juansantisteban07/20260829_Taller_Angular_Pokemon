@@ -1,1 +1,12 @@
-<p>formulario works!</p>
+<form (ngSubmit)="enviar()">
+	<label for="pokemon">Nombre o ID del Pokémon</label>
+	<input
+		id="pokemon"
+		name="pokemon"
+		type="search"
+		[(ngModel)]="valor"
+		placeholder="Ej. pikachu o 25"
+		required
+	/>
+	<button type="submit">Buscar</button>
+</form>
