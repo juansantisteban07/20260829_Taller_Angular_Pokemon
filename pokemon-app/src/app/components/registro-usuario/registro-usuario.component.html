@@ -1,84 +1,115 @@
-<main class="form-container">
-    <div>
-		<header class="form-header">
-		  <h2>Registro de Usuario</h2>
-		  <p>Por favor completa los siguientes datos obligatorios</p>
-		</header>
-	</div>
-	<div>
-	 <form id='FormularioRegistro' (ngSubmit)="guardarUsuario()" >   
-
-      <div class="form-row">
-        <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" [ngModel]="nombre()" (ngModelChange)="nombre.set($event)" name="nombre" placeholder="Ej. Carlos" required>
-        </div>
-
-        <div class="form-group">
-          <label for="apellido">Apellido</label>
-          <input type="text" id="apellido" [ngModel]="apellido()" (ngModelChange)="apellido.set($event)" name="apellido" placeholder="Ej. Pérez" required>
-        </div>
-		
-
-		
-
-      </div>
-
-
-      <div class="form-row">
+<div class="form-container">
+    <h2>Formulario de Registro</h2>
+    <form id="FormularioRegistro" (ngSubmit)="guardarUsuario()">
         
-				<div class="form-group">
-          <label for="tipo_doc">Tipo de documento</label>
-          <select id="tipo_doc" [ngModel]="tipo_doc()" (ngModelChange)="tipo_doc.set($event)" name="tipo_doc" required>
-            <option value="" disabled >Seleccione...</option>
-            <option value="CC" selected>Cédula de Ciudadanía</option>
-            <option value="CE">Cédula de Extranjería</option>
-            <option value="PAS" >Pasaporte</option>
-          </select>
-        </div>
+        <!-- Nombres -->
         <div class="form-group">
-          <label for="dni">Número de DNI</label>
-          <input type="text" id="dni" [ngModel]="dni()" (ngModelChange)="dni.set($event)" name="dni" placeholder="12345678" pattern="[0-9]{6,12}" title="Ingrese solo números" required>
+            <label for="nombres">Nombres:</label>
+            <input 
+                type="text" 
+                id="nombres" 
+                name="nombres" 
+                placeholder="Ingresa tus nombres" 
+                [ngModel]="nombre()" 
+                (ngModelChange)="nombre.set($event)" 
+                required>
         </div>
-		
-		
-      </div>
 
+        <!-- Apellidos -->
+        <div class="form-group">
+            <label for="apellidos">Apellidos:</label>
+            <input 
+                type="text" 
+                id="apellidos" 
+                name="apellidos" 
+                placeholder="Ingresa tus apellidos" 
+                [ngModel]="apellido()" 
+                (ngModelChange)="apellido.set($event)" 
+                required>
+        </div>
 
-      <div class="form-group">
-        <label for="fecha_nacimiento">Fecha de nacimiento</label>
-        <input type="date" id="fecha_nacimiento" [ngModel]="fecha_nacimiento()" (ngModelChange)="fecha_nacimiento.set($event)" name="fecha_nacimiento" required>
-      </div>
+        <!-- Tipo de identificación -->
+        <div class="form-group">
+            <label for="tipo-id">Tipo de documento:</label>
+            <select 
+                id="tipo-id" 
+                name="tipo-id" 
+                [ngModel]="tipo_doc()" 
+                (ngModelChange)="tipo_doc.set($event)" 
+                required>
+                <option value="" disabled>Seleccione una opción</option>
+                <option value="CC">Cédula de ciudadanía</option>
+                <option value="TI">Tarjeta de identidad</option>   
+                <option value="PAS">Pasaporte</option>
+                <option value="CE">Cédula de extranjería</option>
+            </select>
+        </div>
 
+        <!-- Número de documento -->
+        <div class="form-group">
+            <label for="numero-doc">Número de documento:</label>
+            <input 
+                type="text" 
+                id="numero-doc" 
+                name="numero-doc" 
+                placeholder="Ingresa tu número de documento" 
+                [ngModel]="dni()" 
+                (ngModelChange)="dni.set($event)" 
+                required>
+        </div>
 
-      <div class="form-group">
-        <label for="correo">Correo electrónico</label>
-        <input type="email" id="correo" [ngModel]="correo()" (ngModelChange)="correo.set($event)" name="correo" placeholder="ejemplo@correo.com" required>
-      </div>
+        <!-- Fecha de nacimiento -->
+        <div class="form-group">
+            <label for="fecha-nacimiento">Fecha de nacimiento:</label>
+            <input 
+                type="date" 
+                id="fecha-nacimiento" 
+                name="fecha-nacimiento" 
+                [ngModel]="fecha_nacimiento()" 
+                (ngModelChange)="fecha_nacimiento.set($event)" 
+                required>
+        </div>
 
+        <!-- Correo -->
+        <div class="form-group">
+            <label for="correo">Correo electrónico:</label>
+            <input 
+                type="email" 
+                id="correo" 
+                name="correo" 
+                placeholder="ejemplo@correo.com" 
+                [ngModel]="correo()" 
+                (ngModelChange)="correo.set($event)" 
+                required>
+        </div>
 
-      <div class="checkbox-group">
-        <input type="checkbox" id="datos_personales" [ngModel]="datos_personales()" (ngModelChange)="datos_personales.set($event)" name="datos_personales" required>
-        <label for="datos_personales">
-          Acepto el tratamiento de mis datos personales de acuerdo con las <a href="#">políticas de privacidad</a>.
-        </label>
-      </div>
+        <!-- Check de tratamiento de datos -->
+        <div class="terms-group">
+            <input 
+                type="checkbox" 
+                id="terminos" 
+                name="terminos" 
+                [ngModel]="datos_personales()" 
+                (ngModelChange)="datos_personales.set($event)" 
+                required>
+            <label for="terminos" class="terms-label">
+                Acepto los términos y condiciones
+                <br>
+                <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981" target="_blank" rel="noopener noreferrer">Tratamiento de datos</a>
+            </label>
+        </div>
 
-
-      <button type="submit" class="btn-submit" >Enviar Registro</button>
-
+        <!-- Botón de enviar -->
+        <button type="submit" class="btn-submit">Enviar formulario</button>
     </form>
-	</div>
-	
-	@if (ultimoUsuario(); as user) {
-    <div class="user-info">
-      <h3>Usuario Registrado</h3>
-      <p><strong>ID generado:</strong> {{ user.id }}</p>
-      <p><strong>Nombre Completo:</strong> {{ user.nombreCompleto }}</p>
-      <p><strong>Documento:</strong> {{ user.documento.tipo }} - {{ user.documento.numero }}</p>
-      <p><strong>Fecha de Nacimiento:</strong> {{ user.fechaNacimiento }}</p>
-      <p><strong>Correo:</strong> {{ user.correo }}</p>
-    </div>
-  }
 
-  </main>
+
+    @if (ultimoUsuario()) {
+        <div class="resultado-registro">
+            <h3>Usuario Registrado</h3>
+            <p><strong>Nombre:</strong> {{ ultimoUsuario()?.nombreCompleto }}</p>
+            <p><strong>Documento:</strong> {{ ultimoUsuario()?.documento?.tipo }} {{ ultimoUsuario()?.documento?.numero }}</p>
+            <p><strong>Correo:</strong> {{ ultimoUsuario()?.correo }}</p>
+        </div>
+    }
+</div>

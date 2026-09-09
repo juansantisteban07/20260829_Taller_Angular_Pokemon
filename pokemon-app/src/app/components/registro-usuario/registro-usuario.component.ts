@@ -2,19 +2,17 @@ import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 export interface Usuario {
-    id : number;
-    nombreCompleto : string;
-    documento : { 
-      tipo: string;
-      numero: string
-    };
-    fechaNacimiento : string;
-    correo : string;
-    datosPersonales : boolean;  
-    fechaRegistro: string;
-
+  id: number;
+  nombreCompleto: string;
+  documento: {
+    tipo: string;
+    numero: string;
+  };
+  fechaNacimiento: string;
+  correo: string;
+  datosPersonales: boolean;
+  fechaRegistro: string;
 }
-
 
 @Component({
   imports: [FormsModule],
@@ -26,36 +24,34 @@ export interface Usuario {
 export class RegistroUsuarioComponent {
   nombre = signal('');
   apellido = signal('');
-  tipo_doc = signal('CC');
+  tipo_doc = signal('');
   dni = signal('');
   fecha_nacimiento = signal('');
   correo = signal('');
   datos_personales = signal(false);
 
-    ultimoUsuario = signal<Usuario | null>(null);
+  ultimoUsuario = signal<Usuario | null>(null);
 
-    guardarUsuario(): void {
+ guardarUsuario() {
         if(!this.datos_personales()){
           alert('Debes aceptar el tratamiento de datos personales');
           return;
         }
 
-        const usuarioCreado: Usuario = {
-        id : Date.now(),
-        nombreCompleto : `${this.nombre()} ${this.apellido()}`,
-        documento : {
-          tipo: this.tipo_doc(),
-          numero: this.dni()
-        },
-        fechaNacimiento : this.fecha_nacimiento(),
-        correo : this.correo(),
-        datosPersonales : this.datos_personales(),  
-        fechaRegistro: new Date().toLocaleDateString()
-    }
+    const usuarioCreado: Usuario = {
+      id: Date.now(),
+      nombreCompleto: `${this.nombre()} ${this.apellido()}`,
+      documento: {
+        tipo: this.tipo_doc(),
+        numero: this.dni(),
+      },
+      fechaNacimiento: this.fecha_nacimiento(),
+      correo: this.correo(),
+      datosPersonales: this.datos_personales(),
+      fechaRegistro: new Date().toLocaleDateString(),
+    };
 
-    localStorage.setItem(`usuarioCreado${usuarioCreado.id}`, JSON.stringify(usuarioCreado));
-
+    localStorage.setItem(usuarioCreado.id.toString(), JSON.stringify(usuarioCreado));
     this.ultimoUsuario.set(usuarioCreado);
-
-    }
   }
+}

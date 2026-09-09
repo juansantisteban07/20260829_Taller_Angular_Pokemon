@@ -1,19 +1,11 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    min-height: 100vh;
+:host {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    min-height: 100vh;
     padding: 20px;
 }
-
 
 .form-container {
     background-color: #ffffff;
@@ -31,7 +23,6 @@ h2 {
     font-size: 1.6rem;
 }
 
-
 .form-group {
     margin-bottom: 18px;
 }
@@ -44,10 +35,10 @@ label {
     font-size: 0.9rem;
 }
 
-
 input[type="text"],
 input[type="tel"],
 input[type="email"],
+input[type="date"],
 select {
     width: 100%;
     padding: 12px 14px;
@@ -63,12 +54,12 @@ select {
 input[type="text"]:focus,
 input[type="tel"]:focus,
 input[type="email"]:focus,
+input[type="date"]:focus,
 select:focus {
     border-color: #3b82f6;
     background-color: #ffffff;
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
 }
-
 
 .terms-group {
     display: flex;
@@ -125,83 +116,23 @@ button[type="submit"]:active {
     transform: scale(0.99);
 }
 
-
-/* ============================================================
-   TALLER: FUNCIONES Y MANIPULACIÓN DEL DOM
-   ============================================================ */
-
-.taller-container {
-    margin-top: 36px;
-    padding-top: 28px;
-    border-top: 2px dashed #cbd5e1;
-}
-
-.taller-container h2 {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-}
-
-.reto {
-    background-color: #f8fafc;
-    border: 1.5px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 16px 18px;
-    margin-bottom: 16px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.reto:hover {
-    border-color: #93c5fd;
-}
-
-.reto h3 {
-    color: #2c3e50;
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.reto input[type="text"] {
-    margin-bottom: 10px;
-}
-
-.reto button {
-    padding: 9px 18px;
-    background-color: #3b82f6;
-    color: #ffffff;
-    border: none;
+/* Tarjeta del usuario registrado */
+.resultado-registro {
+    margin-top: 24px;
+    padding: 16px;
+    background-color: #f1f5f9;
     border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    border-left: 4px solid #2563eb;
 }
 
-.reto button:hover {
-    background-color: #2563eb;
+.resultado-registro h3 {
+    color: #1e293b;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
 }
 
-.reto button:active {
-    transform: scale(0.97);
-}
-
-.reto pre {
-    margin-top: 12px;
-    background-color: #1e293b;
-    color: #e2e8f0;
-    padding: 12px 14px;
-    border-radius: 8px;
-    font-family: 'Consolas', 'Courier New', monospace;
-    font-size: 0.82rem;
-    line-height: 1.5;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-break: break-word;
-    min-height: 20px;
-}
-
-.reto pre:empty::before {
-    content: "El resultado aparecerá aquí...";
-    color: #64748b;
-    font-style: italic;
+.resultado-registro p {
+    color: #475569;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
 }
