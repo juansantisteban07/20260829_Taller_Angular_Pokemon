@@ -1,32 +1,46 @@
 <form (ngSubmit)="buscarPokemon()">
-    <div>
-        <label>inserte el nombre del Pokémon</label>
+  <div>
+    <label>inserte el nombre del Pokémon</label>
     <input
-    type = "text"
-    [ngModel]="nombrePokemoninput()"
-    (ngModelChange)="nombrePokemoninput.set($event)"
-    name="nombrePokemon"
-    placeholder="EJ: pikachu, charmander, bulbasaur"
-    required
+      type="text"
+      [ngModel]="nombrePokemoninput()"
+      (ngModelChange)="nombrePokemoninput.set($event)"
+      name="nombrePokemon"
+      placeholder="EJ: pikachu, charmander, bulbasaur"
+      required
     />
-    </div>
-    <div>
-        <button type="submit"> Buscar </button>
-    </div>
+  </div>
+  <div>
+    <button type="submit" [disabled]="cargando()">Buscar</button>
+  </div>
 </form>
 
-<div id="resultadoPokemon">
+@if (mensajeError()) {
+  <p class="error">{{ mensajeError() }}</p>
+}
 
-    @if(pokemon(); as p){
+@if (pokemon(); as poke) {
+  <div appResaltarTarjeta colorBorde="#0000FF" class="card-pokemon">
+    <h3>{{ poke.name }} (#{{ poke.id }})</h3>
+    <img [src]="poke.image" [alt]="poke.name" />
 
-        <div>
-            <h2>Nombre: {{ p.name }}</h2>
-            <img [src]="p.image" [alt]="p.name" />
-            <p><strong>Elemento: </strong>{{ p.type }}</p>
-        </div>
+    <p>
+      <span
+        class="badge-tipo"
+        [ngStyle]="{
+          'background-color': poke.type === 'fire' ? '#ff0000' :
+            poke.type === 'water' ? '#0000FF' :
+            poke.type === 'grass' ? '#008000' :
+            '#cccccc'
+        }"
+      >
+        {{ poke.type }}
+      </span>
+    </p>
 
-    } @else if (mensajeError()){
-        <p>{{ mensajeError() }}</p>
-    }
-
-</div>
+    <p>exp base: <strong>{{ poke.baseExperience }}</strong></p>
+    <button class="btn-guardar" (click)="guardarEnEquipo()">
+      almacenar en Inventario
+    </button>
+  </div>
+}
